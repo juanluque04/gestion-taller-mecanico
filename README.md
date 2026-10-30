@@ -1,59 +1,220 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔧 Gestor de Taller
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicación web para organizar el día a día de un taller mecánico pequeño: clientes, vehículos, reparaciones y las tareas de cada trabajador, todo en un mismo sitio.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-MySQL-003545?logo=mariadb&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> Proyecto final del ciclo de **Desarrollo de Aplicaciones Web (DAW)**. Actualmente es un prototipo funcional.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📖 Origen del proyecto
 
-## Learning Laravel
+Mi hermano es mecánico en un taller de vehículos. Hasta ahora organiza los trabajos del taller con **una hoja de papel**: qué coche ha entrado, qué hay que hacerle, quién se encarga, qué piezas faltan por llegar… Funciona, pero tiene sus problemas: la hoja se pierde o se mancha, no hay historial de lo que se le hizo a cada coche y cuando hay más de una persona trabajando es difícil saber en qué está cada uno.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Gestor de Taller** nace para sustituir esa hoja. La idea es que el jefe del taller registre cada coche que entra, lo divida en tareas y las reparta entre los trabajadores, y que cada trabajador vea en su móvil u ordenador qué le toca hoy, apunte las horas, los materiales que usa y suba fotos del antes y el después.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📝 Descripción
 
-## Laravel Sponsors
+La aplicación tiene dos roles:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Jefe**: gestiona clientes, vehículos, reparaciones, trabajadores y reparte las tareas.
+- **Trabajador**: ve sus tareas, las va actualizando y deja constancia del trabajo hecho.
 
-### Premium Partners
+El flujo de trabajo es el siguiente:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```
+Cliente ──▶ Vehículo ──▶ Reparación ──▶ Tareas ──▶ Materiales y fotos
+                          (entrada al     (asignadas a
+                           taller)         un trabajador)
+```
 
-## Contributing
+## 📸 Capturas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<!-- CAPTURA: pantalla de inicio de sesión -->
+![Inicio de sesión](docs/capturas/01-login.png)
 
-## Code of Conduct
+<!-- CAPTURA: panel de inicio del jefe con los contadores -->
+![Panel del jefe](docs/capturas/02-inicio-jefe.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<!-- CAPTURA: listado de reparaciones -->
+![Reparaciones](docs/capturas/03-reparaciones.png)
 
-## Security Vulnerabilities
+<!-- CAPTURA: formulario para crear una tarea -->
+![Crear tarea](docs/capturas/04-crear-tarea.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<!-- CAPTURA: calendario de tareas -->
+![Calendario](docs/capturas/05-calendario.png)
 
-## License
+<!-- CAPTURA: "Mis tareas" desde la cuenta de un trabajador -->
+![Mis tareas](docs/capturas/06-mis-tareas.png)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<!-- CAPTURA: detalle de una tarea con materiales y fotos inicial/final -->
+![Detalle de tarea](docs/capturas/07-detalle-tarea.png)
+
+## ✨ Funcionalidades
+
+### 👔 Jefe
+
+- **Registro inicial**: la primera cuenta se crea desde `/register` y siempre es de jefe. Cuando ya hay dos jefes, el registro público se bloquea.
+- **Panel de inicio** con un resumen del taller: reparaciones activas, tareas pendientes, vehículos en el taller y número de trabajadores.
+- **Gestión de trabajadores**:
+  - Alta con una contraseña aleatoria que se envía por correo al nuevo trabajador.
+  - Edición de sus datos y cambio de rol (jefe / trabajador).
+  - Restablecer la contraseña (además cierra las sesiones abiertas de ese usuario).
+  - Baja de trabajadores (un jefe no se puede eliminar).
+- **Clientes**: alta, edición y baja. Al dar de alta un cliente se le pueden añadir varios vehículos a la vez. Se avisa al momento si el DNI ya existe.
+- **Vehículos**: alta, edición y baja con sus datos técnicos (matrícula, bastidor, motor, cilindrada, potencia, kilómetros…). Se avisa al momento si la matrícula ya existe.
+- **Reparaciones**: registro de la entrada y salida de cada vehículo, estado y observaciones. Si el cliente o el vehículo no existen, se pueden crear desde una ventana emergente sin salir del formulario.
+- **Tareas**: cada reparación se divide en tareas con trabajador asignado, prioridad, estado, fecha programada, horas previstas y reales e importe.
+- **Seguimiento**: ver las tareas de cada trabajador agrupadas por día y todas las tareas del taller en el calendario.
+
+### 🔩 Trabajador
+
+- **Panel de inicio** con sus tareas de hoy, sus tareas pendientes y las horas previstas para hoy.
+- **Mis tareas**: listado agrupado por día y cambio rápido de estado (`pendiente`, `en curso`, `terminada`, `revisada`). Al marcar una tarea como terminada se guarda la fecha automáticamente.
+- **Detalle de la tarea**: datos del cliente y del vehículo, horas reales y observaciones.
+- **Materiales**: añadir o quitar las piezas de cada tarea con su cantidad y estado (`pedido`, `recibido`, `usado`).
+- **Fotos**: subir una foto inicial y una final de cada trabajo, sustituirlas, descargarlas o borrarlas.
+- **Calendario** con sus tareas, coloreadas según la prioridad (alta, media o baja).
+
+### 👥 Comunes
+
+- Inicio y cierre de sesión con nombre de usuario y contraseña.
+- Perfil editable (nombre, usuario, correo) y cambio de contraseña.
+- Interfaz y mensajes de validación en español.
+
+## 🛠️ Tecnologías
+
+| Parte | Tecnologías |
+|---|---|
+| Backend | PHP 8.2+, Laravel 12 (Eloquent, Blade, middleware, Mail) |
+| Base de datos | MariaDB / MySQL |
+| Frontend | Bootstrap 5.3, jQuery 3.6, jQuery Validate, Select2, FullCalendar 6, Font Awesome 6 |
+| Otros | `laravel-lang/lang` (traducciones al español), almacenamiento de imágenes con el disco `public` de Laravel |
+
+Las librerías de frontend se cargan desde CDN, así que no hace falta Node.js ni `npm` para ejecutar el proyecto.
+
+## 🚀 Instalación en local (MariaDB)
+
+### Requisitos
+
+- PHP 8.2 o superior con las extensiones `pdo_mysql`, `mbstring`, `fileinfo` y `gd`
+- Composer
+- MariaDB (o MySQL)
+- Git
+
+### 1. Clonar el repositorio e instalar dependencias
+
+```bash
+git clone https://github.com/juanluque04/gestion-taller-mecanico.git
+cd gestion-taller-mecanico
+composer install
+```
+
+### 2. Crear el archivo de entorno
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 3. Crear la base de datos en MariaDB
+
+Entra en MariaDB (`sudo mariadb` o `mariadb -u root -p`) y ejecuta:
+
+```sql
+CREATE DATABASE taller CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'taller'@'localhost' IDENTIFIED BY 'taller';
+GRANT ALL PRIVILEGES ON taller.* TO 'taller'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### 4. Configurar el `.env`
+
+Cambia estas líneas (las de la base de datos vienen comentadas, hay que quitar el `#`):
+
+```env
+APP_NAME="Gestor de Taller"
+APP_LOCALE=es
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=taller
+DB_USERNAME=taller
+DB_PASSWORD=taller
+
+MAIL_MAILER=log
+```
+
+Con `MAIL_MAILER=log` los correos (por ejemplo, el que recibe un trabajador nuevo con su contraseña) no se envían de verdad, sino que se escriben en `storage/logs/laravel.log`.
+
+<details>
+<summary>Opcional: enviar los correos de verdad con Gmail</summary>
+
+Necesitas una [contraseña de aplicación](https://myaccount.google.com/apppasswords) de Google:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tu_correo@gmail.com
+MAIL_PASSWORD=tu_contraseña_de_aplicacion
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=tu_correo@gmail.com
+MAIL_FROM_NAME="Gestor de Taller"
+```
+
+</details>
+
+### 5. Crear las tablas y cargar los datos de prueba
+
+```bash
+php artisan migrate --seed
+```
+
+### 6. Enlazar la carpeta de imágenes
+
+Hace falta para que se vean las fotos de las tareas:
+
+```bash
+php artisan storage:link
+```
+
+### 7. Arrancar el servidor
+
+```bash
+php artisan serve
+```
+
+Abre <http://127.0.0.1:8000> en el navegador.
+
+## 👤 Usuarios de prueba
+
+Los seeders crean estos usuarios:
+
+| Rol | Usuario | Contraseña |
+|---|---|---|
+| Jefe | `juanluque` | `123456` |
+| Trabajador | `trabajador1` … `trabajador50` | `password123` |
+
+También se generan datos de ejemplo: 5 clientes con entre 1 y 3 vehículos cada uno, varias reparaciones por vehículo y tareas repartidas al azar entre los trabajadores.
+
+> ⚠️ Son credenciales solo para pruebas en local. No las uses en un servidor real.
+
+## 🔮 Próximas mejoras
+
+- [ ] Comprobar que un trabajador solo pueda modificar materiales y fotos de sus propias tareas.
+- [ ] Generar presupuestos y facturas en PDF a partir de las horas, el importe y los materiales de cada reparación.
+- [ ] Historial completo de reparaciones de cada vehículo.
+- [ ] Avisar al cliente (SMS, WhatsApp o correo) cuando su coche esté listo.
+- [ ] Búsqueda y filtros en los listados de clientes, vehículos y reparaciones.
+- [ ] Desplegar la aplicación en un servidor para usarla desde el móvil en el taller.
+
+## 👨‍💻 Autor
+
+**Juan Luque** — Proyecto final de DAW · [GitHub](https://github.com/juanluque04)
